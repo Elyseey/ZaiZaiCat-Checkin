@@ -46,12 +46,11 @@ class SmzdmService:
         activity_task = cell_data.get('activity_task', {})
 
         # 获取累计任务列表
-        accumulate_list = activity_task.get('accumulate_list', {})
-        task_list_v2 = accumulate_list.get('task_list_v2', [])
+        default_list_v2 = activity_task.get('default_list_v2', [])
 
         # 遍历每个模块的任务列表
-        if task_list_v2:
-            module = task_list_v2[0]
+        if default_list_v2:
+            module = default_list_v2[0]
             task_list = module.get('task_list', [])
             logger.info(f"发现{len(task_list)} 个每日任务")
             return task_list
